@@ -1,0 +1,181 @@
+.login-page {
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  height: 100%;
+  min-width: 100vw;
+  width: 100%;
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  margin: 0;
+
+  .login-box {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 40%;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 100;
+
+      div{
+        width: 100%;
+      }
+      input {
+            width: 80%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            
+        }
+        input:focus {
+            border-color: none;
+            outline: none;
+        }
+
+        button {
+            width: 40%;
+            /* min-width:-webkit-fill-available; */
+            min-width: fit-content;
+            padding:0 4px;
+            /* padding: 12px; */
+            border: none;
+            border-radius: 15px;
+            background: #c3c4c7;
+            color: rgba(103, 22, 22, 0.866);
+            font-size: 1.2rem;
+            font-weight: 500;
+            text-align: center;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background: #cda770;
+        }
+
+      h2 {
+        color: #333;
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+      }
+
+      .logemail,
+      .logpassword {
+        width: 80%;
+        padding: 10px;
+        margin: 8px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1rem;
+      }
+
+      .logemail:focus,
+      .logpassword:focus {
+        border-color: none;
+        outline: none;
+      }
+
+      login-button {
+        width: 40%;
+        /* min-width:-webkit-fill-available; */
+        min-width: fit-content;
+        padding: 0 4px;
+        /* padding: 12px; */
+        border: none;
+        border-radius: 15px;
+        background: #c3c4c7;
+        color: rgba(103, 22, 22, 0.866);
+        font-size: 1.2rem;
+        font-weight: 500;
+        text-align: center;
+        cursor: pointer;
+        transition: background 0.3s ease-in-out;
+        margin-top: 20px;
+      }
+
+      login-button:hover {
+        background-color: #3a96e1;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1rem;
+        
+    }
+    input:focus {
+        border-color: #3a96e1;
+        box-shadow: 0 0 10px 0 rgba(58, 150, 225, 0.5);
+        /* outline: none; */
+    }
+
+    button {
+        width: 40%;
+        /* min-width:-webkit-fill-available; */
+        min-width: fit-content;
+        padding:0 4px;
+        /* padding: 12px; */
+        border: none;
+        border-radius: 15px;
+        background: #c3c4c7;
+        color: rgba(103, 22, 22, 0.866);
+        font-size: 1.2rem;
+        font-weight: 500;
+        text-align: center;
+        cursor: pointer;
+        transition: background 0.3s ease-in-out;
+        margin-top: 20px;
+    }
+
+    button:hover {
+        background: #cda770;
+    }
+
+    }
+    .google{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      .auth{
+        width: 60%;
+      }
+    }
+
+    .register-option {
+      margin-top: 20px;
+      color: #555;
+    }
+
+    .register-option a {
+      color: #4facfe;
+      text-decoration: none;
+    }
+
+    .register-option a:hover {
+      text-decoration: underline;
+    }
+    
+  }
+}
