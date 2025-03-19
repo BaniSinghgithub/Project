@@ -8,7 +8,7 @@ connectDB();
 
 const app = express();   // to make it executable
 // app.use(cors);
-app.use(cors({ origin: "https://project-nhyt.vercel.app/", credentials: true }));
+app.use(cors({ origin: "https://project-nhyt-5opuyljce-bani-singhs-projects.vercel.app", credentials: true }));
 
 app.use(express.json());
 app.use("/api/userRoutes", userRoutes);
