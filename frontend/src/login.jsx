@@ -16,6 +16,7 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const API_URL=process.env.REACT_APP_API_URL || "http://localhost:5000";
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
@@ -38,7 +39,7 @@ const LoginPage = () => {
 
     try {
         const loginResponse = await axios.post(
-            "http://localhost:5000/api/userRoutes/login",
+            `{API_URL}/api/userRoutes/login`,
             {
               email: email.toLowerCase(),
               password: password
@@ -78,7 +79,7 @@ const LoginPage = () => {
 
       try {
         const loginResponse = await axios.post(
-          "http://localhost:5000/api/userRoutes/loginAuth",
+           `{API_URL}/api/userRoutes/loginAuth`,
           {
             email: user.email,
             password: "google-auth-user"
