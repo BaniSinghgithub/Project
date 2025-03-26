@@ -11,7 +11,7 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 export default function SignUp() {
   const navigate = useNavigate();
-  const [data, setdata] = useState(null); // for localstorage
+  // const [data, setdata] = useState(null); // for localstorage
   const [showPassword, setShowPassword] = useState(false);
   const [showconfPassword, setShowconfPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -35,18 +35,18 @@ export default function SignUp() {
   // }, []);
 
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      setdata(JSON.parse(storedUser));
-      navigate("/form");
-    }
-  }, []);
+      const user = JSON.parse(sessionStorage.getItem("token"));
+      if (user) {
+        // setUser(user);
+        navigate("/form");
+      }
+    }, []);
 
-  useEffect(() => {
-    if (data) {
-      navigate("/form");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (data) {
+  //     navigate("/form");
+  //   }
+  // }, []);
 
   // Function to check email availability
   const checkEmailAvailability = async (email) => {
@@ -135,7 +135,7 @@ export default function SignUp() {
             isGoogleAuth: true,
           })
         );
-        setdata(JSON.parse(localStorage.getItem("user")));
+        // setdata(JSON.parse(localStorage.getItem("user")));
         setTimeout(() => {
           toast.success("Registration successful!");
         }, 2000);

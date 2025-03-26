@@ -11,6 +11,8 @@ import {
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 
 function Form() {
   const [data, setData] = useState({
@@ -25,6 +27,7 @@ function Form() {
   const [showComments, setShowComments] = useState({}); // store data of comments, which is to be shown/hidden
   const [newComment, setNewComment] = useState(""); // add new comment
   const [commentBoxIndex, setCommentBoxIndex] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // collecting data of threads from database on starting of page
@@ -41,6 +44,14 @@ function Form() {
 
     fetchData();
   }, []);
+
+  useEffect(() => {
+      const user = JSON.parse(sessionStorage.getItem("token"));
+      if (!user) {
+        // setUser(user);
+        navigate("/login");
+      }
+    }, []);
 
   const getvalue = (event) => {
     // on changing any input of form
@@ -186,7 +197,7 @@ function Form() {
   };
 
   return (
-    <div className="main">
+    <div className="contain">
       <div className="header">
         <Navbar />
       </div>

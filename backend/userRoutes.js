@@ -1,6 +1,7 @@
 const express = require("express"); // import express from express
 const { User, Thread } = require("./SchemaMongodb");
 const UserRoutes = express.Router();
+const jwt=require("jsonwebtoken");
 
 // to get thread data on starting of page
 UserRoutes.get("/getthread", async (req, res) => {
@@ -160,23 +161,28 @@ UserRoutes.post("/register", async (req, res) => {
 });
 
 // Check if email is registered
-UserRoutes.get("/checkEmail/:email", async (req, res) => {
+UserRoutes.post("/verifyToken", async (req, res) => {
   try {
-    const email = req.params.toLowerCase(); // Get email from route parameters
-
-    const user = await User.findOne({
-      email: email.toLowerCase(),
-    });
-    console.log("user found" + user);
-
-    if (user) {
-      return res.json({ exists: true, message: "Email already in use" });
-    } else {
-      return res.json({ exists: false, message: "Email is available" });
+    const authHeader = req.headers["authorization"];
+    if (!authHeader) {
+        return res.status(403).json({ message: "No token provided" });
     }
+
+    const token = authHeader.split(" ")[1]; // Extract token after "Bearer"
+    
+    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+        if (err) {
+            return res.status(401).json({
+              status:false,
+              message: "Unauthorized acess" });
+        }
+      return res.status(200).json({ status:true, message: "Token is valid" });
+    });
   } catch (error) {
-    console.error("Error checking email:", error);
-    res.status(500).json({ message: "Internal Server Error" });
+    console.error("Authentication error:", error);
+    res.status(500).json({
+      status:false,
+      message: "Internal Server Error" });
   }
 });
 
@@ -190,7 +196,7 @@ UserRoutes.post("/login", async (req, res) => {
 
     // Find user by email
     const user = await User.findOne({
-      email: email.toLowerCase(),
+      email,password
     });
 
     // Debug log
@@ -203,13 +209,8 @@ UserRoutes.post("/login", async (req, res) => {
       });
     }
 
-    //  compare passwords with database password
-    if (password !== user.password) {
-      return res.status(401).json({
-        success: false,
-        error: "Invalid password",
-      });
-    }
+    const token=jwt.sign({email},process.env.JWT_SECRET,{expiresIn:"1d"});
+
 
     // Return user data (excluding password)
     return res.status(200).json({
@@ -219,6 +220,7 @@ UserRoutes.post("/login", async (req, res) => {
         email: user.email,
         isGoogleAuth: user.isGoogleAuth,
       },
+      token
     });
   } catch (error) {
     console.error("Login error:", error);
@@ -253,6 +255,8 @@ UserRoutes.post("/loginAuth", async (req, res) => {
       });
     }
 
+    const token=jwt.sign({email},process.env.JWT_SECRET,{expiresIn:"1d"});
+
     // Return user data (excluding password)
     return res.status(200).json({
       success: true,
@@ -261,6 +265,7 @@ UserRoutes.post("/loginAuth", async (req, res) => {
         email: user.email,
         isGoogleAuth: user.isGoogleAuth,
       },
+      token
     });
   } catch (error) {
     console.error("Login error:", error);

@@ -65,7 +65,7 @@ body {
 }
 
 /* enquiry now */
-.main {
+.contain {
   display: flex;
   flex-direction: column;
   padding-top: 100px;
@@ -217,7 +217,7 @@ body {
   }
 }
 @media only screen and (max-width: 800px) {
-  .main {
+  .contain {
     height: 100%;
     width: 100vw;
     /* display: flex; */

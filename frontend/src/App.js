@@ -14,7 +14,7 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <div className="main">
       {/* <h1 className="backend">{message}</h1> */}
       {/* <Form /> */}
       <SignUp />

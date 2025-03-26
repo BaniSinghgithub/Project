@@ -11,16 +11,16 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 //make login page
 const LoginPage = () => {
-  const [User, setUser] = useState([]);
+  // const [User, setUser] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
+    const user = JSON.parse(sessionStorage.getItem("token"));
     if (user) {
-      setUser(user);
+      // setUser(user);
       navigate("/form");
     }
   }, []);
@@ -47,8 +47,8 @@ const LoginPage = () => {
 
         if (loginResponse.data.success) {
             toast.success("Login successful! Redirecting...");
-            setUser(loginResponse.data.user);
-            localStorage.setItem("user", JSON.stringify(loginResponse.data.user));
+            // setUser(loginResponse.data.user);
+            sessionStorage.setItem("token",JSON.stringify(loginResponse.data.token));
             setTimeout(() => {
                 navigate("/form");
             }, 1000);
@@ -90,9 +90,8 @@ const LoginPage = () => {
             toast.success("Login successfully")
             
           }, 2000);
-          setUser(user);
-          const storedUser = JSON.stringify(user);
-          localStorage.setItem("user", storedUser);
+          // setUser(user);
+          sessionStorage.setItem("token",JSON.stringify(loginResponse.data.token));
           
           toast.success("Login successful!");
           navigate("/form");
