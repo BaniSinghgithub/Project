@@ -15,6 +15,7 @@ export default function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
   const [showconfPassword, setShowconfPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+   const API_URL=process.env.REACT_APP_API_URL || "http://localhost:5000";
   const [formData, setFormData] = useState({
     // for form data
     username: "",
@@ -57,7 +58,7 @@ export default function SignUp() {
 
     try {
       const response = await axios.get(
-        `http://localhost:5000/check-email?email=${email}`
+        `{API_URL}/check-email?email=${email}`
       );
 
       setEmailStatus({
@@ -118,7 +119,7 @@ export default function SignUp() {
 
       // If user not exist, register
       const registerResponse = await axios.post(
-        "http://localhost:5000/api/userRoutes/register",
+        `{API_URL}/api/userRoutes/register`,
         {
           name: userData.name,
           email: userData.email,
@@ -183,7 +184,7 @@ export default function SignUp() {
 
     try {
       const registerResponse = await axios.post(
-        "http://localhost:5000/api/userRoutes/register",
+        `{API_URL}/api/userRoutes/register`,
         {
           name: formData.username,
           email: formData.email,

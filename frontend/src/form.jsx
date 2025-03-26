@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 
 
 function Form() {
+  const API_URL=process.env.REACT_APP_API_URL || "http://localhost:5000";
   const [data, setData] = useState({
     title: "",
     content: "",
@@ -34,7 +35,7 @@ function Form() {
     const fetchData = async () => {
       try {
         const databaseData = await axios.get(
-          "http://localhost:5000/api/userRoutes/getthread"
+          `${API_URL}/api/userRoutes/getthread`
         );
         setUserData(databaseData.data);
       } catch (error) {
@@ -102,7 +103,7 @@ function Form() {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/userRoutes/savethread",
+       `${API_URL}/api/userRoutes/savethread`,
         data
       );
       if (!response.status) {
@@ -133,7 +134,7 @@ function Form() {
             // toast.success(comment);
             // Sending update request to backend
             const response = await axios.put(
-              `http://localhost:5000/api/userRoutes/updatethread/${thread.content}`,
+              `${API_URL}/api/userRoutes/updatethread/${thread.content}`,
               { comment }
             );
 
@@ -187,7 +188,7 @@ function Form() {
   // delete any topic/thread
   const deldata = async (index) => {
     const resonse = await axios.delete(
-      `http://localhost:5000/api/userRoutes/deletethread/${userdata[index].content}`
+      `${API_URL}/api/userRoutes/deletethread/${userdata[index].content}`
     );
     if (resonse.status) {
       toast.success(resonse.message);
