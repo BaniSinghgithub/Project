@@ -8,11 +8,11 @@ connectDB();
 
 const app = express();   // to make it executable
 // app.use(cors);
-<<<<<<< HEAD
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
-=======
+// <<<<<<< HEAD
+// app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+// =======
 app.use(cors({ origin: "https://project-nhyt-5opuyljce-bani-singhs-projects.vercel.app", credentials: true }));
->>>>>>> f65897fa458e719751b05bee77ded7e2854b42d6
+// >>>>>>> f65897fa458e719751b05bee77ded7e2854b42d6
 
 app.use(express.json());
 app.use("/api/userRoutes", userRoutes);
