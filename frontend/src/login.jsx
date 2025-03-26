@@ -39,7 +39,7 @@ const LoginPage = () => {
 
     try {
         const loginResponse = await axios.post(
-            `{API_URL}/api/userRoutes/login`,
+            `${API_URL}/api/userRoutes/login`,
             {
               email: email.toLowerCase(),
               password: password
@@ -79,7 +79,7 @@ const LoginPage = () => {
 
       try {
         const loginResponse = await axios.post(
-           `{API_URL}/api/userRoutes/loginAuth`,
+           `${API_URL}/api/userRoutes/loginAuth`,
           {
             email: user.email,
             password: "google-auth-user"
