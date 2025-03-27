@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const connectDB = require("./mongodb");
 const userRoutes = require("./userRoutes");
-const dotenv = require("dotenv").config();  // to access environmental variables from .env file
+require("dotenv").config();  // to access environmental variables from .env file
 
 connectDB();
 
