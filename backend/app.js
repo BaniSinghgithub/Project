@@ -24,7 +24,9 @@ const corsOptions = {
     "https://project-nhyt.vercel.app",  // ✅ your deployed frontend
      "https://project-nhyt-ag4s0vn44-bani-singhs-projects.vercel.app"
   ],
-  credentials: true, // if you're using cookies/auth headers
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
 };
 
 app.use(cors(corsOptions));
