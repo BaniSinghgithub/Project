@@ -9,11 +9,26 @@ connectDB();
 const app = express();   // to make it executable
 app.use(express.json());
 
+// const corsOptions = {
+//   origin: ["http://localhost:3000", "https://project-nhyt-ag4s0vn44-bani-singhs-projects.vercel.app"],
+//   credentials: true,
+// };
+
+
+// app.use(cors(corsOptions));
+
+// Add all allowed frontend origins here:
 const corsOptions = {
-  origin: ["http://localhost:3000", "https://project-nhyt-ag4s0vn44-bani-singhs-projects.vercel.app"],
-  credentials: true,
+  origin: [
+    "http://localhost:3000",
+    "https://project-nhyt.vercel.app",  // ✅ your deployed frontend
+     "https://project-nhyt-ag4s0vn44-bani-singhs-projects.vercel.app"
+  ],
+  credentials: true, // if you're using cookies/auth headers
 };
+
 app.use(cors(corsOptions));
+
 
 app.use("/api", userRoutes);
 
