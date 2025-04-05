@@ -19,11 +19,7 @@ app.use(express.json());
 
 // Add all allowed frontend origins here:
 const corsOptions = {
-  origin: [
-    "http://localhost:3000",
-    "https://project-nhyt.vercel.app",  // ✅ your deployed frontend
-     "https://project-nhyt-ag4s0vn44-bani-singhs-projects.vercel.app"
-  ],
+  origin:"*",
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
