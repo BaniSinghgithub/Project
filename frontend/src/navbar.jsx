@@ -4,10 +4,10 @@ import "./App.css"
 
 function Navbar() {
   const navigate = useNavigate();
-  const userdata = JSON.parse(localStorage.getItem("user"));
+  const userdata = sessionStorage.getItem("token");
 
   const handleLogout = () =>{
-    localStorage.removeItem("user");
+    sessionStorage.removeItem("token");
     navigate("/");
     window.location.reload();         // refresh the page
   }
