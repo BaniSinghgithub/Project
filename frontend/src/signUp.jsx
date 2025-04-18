@@ -57,7 +57,7 @@ export default function SignUp() {
 
     try {
       const response = await axios.get(
-        `{API_URL}/check-email?email=${email}`
+        `${API_URL}/check-email?email=${email}`
       );
 
       setEmailStatus({
@@ -128,7 +128,7 @@ export default function SignUp() {
       );
 
       if (registerResponse.data.status) {
-        sessionStorage.setItem("token",loginResponse.data.token);
+        sessionStorage.setItem("token", registerResponse.data.token);
         // setdata(JSON.parse(localStorage.getItem("user")));
         setTimeout(() => {
           toast.success("Registration successful!");
@@ -189,7 +189,7 @@ export default function SignUp() {
       // console.log("data sent for registration");
 
       if (!registerResponse.data.status) {
-        setTimeout(() => toast.success(registerResponse.data.message), 2000);
+        setTimeout(() => toast.error(registerResponse.data.message), 2000);
       } else {
         setTimeout(() => {
           toast.success(registerResponse.data.message);
