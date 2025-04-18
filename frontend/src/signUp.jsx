@@ -35,7 +35,7 @@ export default function SignUp() {
   // }, []);
 
   useEffect(() => {
-      const user = JSON.parse(sessionStorage.getItem("token"));
+      const user = sessionStorage.getItem("token");
       if (user) {
         // setUser(user);
         navigate("/form");
