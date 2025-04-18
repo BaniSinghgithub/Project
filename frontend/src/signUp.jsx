@@ -15,7 +15,7 @@ export default function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
   const [showconfPassword, setShowconfPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-   const API_URL=process.env.REACT_APP_API_URL || "http://localhost:5000";
+  const API_URL=process.env.REACT_APP_API_URL || "http://localhost:5000";
   const [formData, setFormData] = useState({
     // for form data
     username: "",
@@ -28,8 +28,7 @@ export default function SignUp() {
     exists: false,
   });
 
-  const clientId =
-    "713538226120-j4dvkdhdu03r21vr4bm8j7f0lp0u5c4r.apps.googleusercontent.com";
+ const clientId =process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
   // useEffect(() => {
   //   toast("Please fill in all required fields");
@@ -129,13 +128,7 @@ export default function SignUp() {
       );
 
       if (registerResponse.data.status) {
-        localStorage.setItem(
-          "user",
-          JSON.stringify({
-            ...userData,
-            isGoogleAuth: true,
-          })
-        );
+        sessionStorage.setItem("token",loginResponse.data.token);
         // setdata(JSON.parse(localStorage.getItem("user")));
         setTimeout(() => {
           toast.success("Registration successful!");
