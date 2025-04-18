@@ -47,7 +47,7 @@ function Form() {
   }, []);
 
   useEffect(() => {
-      const user = JSON.parse(sessionStorage.getItem("token"));
+      const user = sessionStorage.getItem("token");
       if (!user) {
         // setUser(user);
         navigate("/login");
