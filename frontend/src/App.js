@@ -6,9 +6,10 @@ import SignUp from "./signUp";
 
 function App() {
   const [message, setMessage] = useState("");  // just to check backend data
+  const API_URL=process.env.REACT_APP_API_URL || "http://localhost:5000";
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/message")
+    axios.get(`${API_URL}/api/message`)
       .then(response => setMessage(response.data))
       .catch(error => console.error("Error fetching message:", error));
   }, []);
