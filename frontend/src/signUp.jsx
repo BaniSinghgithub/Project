@@ -118,7 +118,7 @@ export default function SignUp() {
 
       // If user not exist, register
       const registerResponse = await axios.post(
-        `${API_URL}/api/userRoutes/register`,
+        `${API_URL}/api/register`,
         {
           name: userData.name,
           email: userData.email,
@@ -177,7 +177,7 @@ export default function SignUp() {
 
     try {
       const registerResponse = await axios.post(
-        `${API_URL}/api/userRoutes/register`,
+        `${API_URL}/api/register`,
         {
           name: formData.username,
           email: formData.email,
