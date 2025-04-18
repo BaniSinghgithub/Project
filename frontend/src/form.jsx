@@ -35,7 +35,7 @@ function Form() {
     const fetchData = async () => {
       try {
         const databaseData = await axios.get(
-          `${API_URL}/api/userRoutes/getthread`
+          `${API_URL}/api/getthread`
         );
         setUserData(databaseData.data);
       } catch (error) {
@@ -103,7 +103,7 @@ function Form() {
 
     try {
       const response = await axios.post(
-       `${API_URL}/api/userRoutes/savethread`,
+       `${API_URL}/api/savethread`,
         data
       );
       if (!response.status) {
@@ -134,7 +134,7 @@ function Form() {
             // toast.success(comment);
             // Sending update request to backend
             const response = await axios.put(
-              `${API_URL}/api/userRoutes/updatethread/${thread.content}`,
+              `${API_URL}/api/updatethread/${thread.content}`,
               { comment }
             );
 
@@ -188,7 +188,7 @@ function Form() {
   // delete any topic/thread
   const deldata = async (index) => {
     const resonse = await axios.delete(
-      `${API_URL}/api/userRoutes/deletethread/${userdata[index].content}`
+      `${API_URL}/api/deletethread/${userdata[index].content}`
     );
     if (resonse.status) {
       toast.success(resonse.message);
