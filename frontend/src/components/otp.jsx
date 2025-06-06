@@ -8,8 +8,8 @@ function Otp({ email, otpVerification }) {
   const [otpState, setOtpState] = useState("Send Otp");
   const [verificationStatus, setVerificationStatus] = useState(false);
   const [otp, setOtp] = useState("");
-  // const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
-  const API_URL = "http://localhost:5000";
+  const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+  // const API_URL = "http://localhost:5000";
 
   const verifyOTP = () => {
     if (otp.length === 0) {
