@@ -15,8 +15,8 @@ export default function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
   const [showconfPassword, setShowconfPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  // const API_URL=process.env.REACT_APP_API_URL || "http://localhost:5000";
-  const API_URL = "http://localhost:5000";
+  const API_URL=process.env.REACT_APP_API_URL || "http://localhost:5000";
+  // const API_URL = "http://localhost:5000";
   const [formData, setFormData] = useState({
     // for form data
     username: "",
