@@ -15,8 +15,8 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const [showPassword, setShowPassword]=useState(false);
-  // const API_URL=process.env.REACT_APP_API_URL || "http://localhost:5000";
-  const API_URL = "http://localhost:5000";
+  const API_URL=process.env.REACT_APP_API_URL || "http://localhost:5000";
+  // const API_URL = "http://localhost:5000";
 
   useEffect(() => {
     const user = sessionStorage.getItem("token");
