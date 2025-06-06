@@ -14,17 +14,6 @@ const userSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: function() {
-      return !this.isGoogleAuth; // Password only required for non-Google auth users
-    }
-  },
-  isGoogleAuth: {
-    type: Boolean,
-    default: false
-  },
-  picture: {
-    type: String,
-    required: false
   }
 }, { timestamps: true }); // Adds createdAt and updatedAt automatically
 

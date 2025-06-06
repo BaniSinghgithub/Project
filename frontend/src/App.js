@@ -1,23 +1,14 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-// import Form from "./form";
-import SignUp from "./signUp";
-// import Navbar from "./navbar";
+import "./App.css";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+import SignUp from "./components/signUp";
 
 function App() {
-  const [message, setMessage] = useState("");  // just to check backend data
-  const API_URL=process.env.REACT_APP_API_URL || "http://localhost:5000";
-
-  useEffect(() => {
-    axios.get(`${API_URL}/api/message`)
-      .then(response => setMessage(response.data))
-      .catch(error => console.error("Error fetching message:", error));
-  }, []);
 
   return (
     <div className="main">
-      {/* <h1 className="backend">{message}</h1> */}
-      {/* <Form /> */}
+      <ToastContainer />
       <SignUp />
     </div>
   );

@@ -3,9 +3,9 @@ import ReactDOM from "react-dom/client";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import "./index.css";
 import App from "./App";
-import SignUp from "./signUp";
-import Login from "./login";
-import Form from "./form";
+import SignUp from "./components/signUp";
+import Login from "./components/login";
+import Form from "./components/form";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
